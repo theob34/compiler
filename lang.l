@@ -1,52 +1,64 @@
-% {
+%{
 include <stdlib.h>
 include <stdio.h>
 include "y.tab.h"
-
 %}
 
+%option noyywrap
+
+
 %%
-"if" {fprintf (stderr, "tIF");}
-"while" {fprintf (stderr, "tWHILE");}
-"for" {fprintf (stderr, "tFOR");}
+"main" {fprintf (stderr, "MAIN")}
+"if" {fprintf (stderr, "IF");}
+"while" {fprintf (stderr, "WHILE");}
+"for" {fprintf (stderr, "FOR");}
 ")" {fprintf (stderr, ")");}
 "(" {fprintf (stderr, "(");}
 "{" {fprintf (stderr, "{");}
 "}" {fprintf (stderr, "}");}
-"return" {fprintf (stderr, "tRETURN");}
+"return" {fprintf (stderr, "RETURN");}
 ";" {fprintf (stderr, ";");}
-"else" {fprintf (stderr, "tELSE");}
+"else" {fprintf (stderr, "ELSE");}
 "=" {fprintf (stderr, "=");}
-"+" {fprintf (stderr, "tADD");}
-"*" {fprintf (stderr, "tMUL");}
+"+" {fprintf (stderr, "ADD");}
+"*" {fprintf (stderr, "TIMES");}
+"/" {fprintf (stderr, "DIV");}
 "<" {fprintf (stderr, "<");}
 ">" {fprintf (stderr, ">");}
-"-" {fprintf (stderr, "tSOU");}
+"-" {fprintf (stderr, "SUB");}
 "||" {fprintf (stderr, "||");}
 "&&" {fprintf (stderr, "&&");}
 "==" {fprintf (stderr, "==");}
-"int" {fprintf (stderr, "tINT");}
-"const" {fprintf (stderr, "tCONST");}
-"void" {fprintf (stderr, "tVOID");}
+"int" {fprintf (stderr, "INT");}
+"const" {fprintf (stderr, "CONST");}
+"void" {fprintf (stderr, "VOID");}
+"\n" {fprintf (stderr, "NEXWLINE");}
+" " {fprintf (stderr, "SPACE");}
+"   " {fprintf (stderr, "TAB");}
+"," {fprintf (stderr, "COMA");}
+";" {fprintf (stderr, ";");}
+"printf" {fprintf (stderr, "PRINTF");}
 
-"<=" {fprintf (stderr, "<=");}
-">=" {fprintf (stderr, ">=");}
-"^=" {fprintf (stderr, "^=");}
-"&" {fprintf (stderr, "&");}
-"|" {fprintf (stderr, "|");}
-"<<" {fprintf (stderr, "<<");}
-"goto" {fprintf (stderr, "tGOTO");}
-":" {fprintf (stderr, ":");}
-"%" {fprintf (stderr, "%");}
-"volatile" {fprintf (stderr, "tVOLATILE");}
-"struct" {fprintf (stderr, "tSTRUCT");}
-"enum" {fprintf (stderr, "tENUM");}
+ // Facultatif
+ // "<=" {fprintf (stderr, "<=");}
+ // ">=" {fprintf (stderr, ">=");}
+ // "^=" {fprintf (stderr, "^=");}
+ // "&" {fprintf (stderr, "&");}
+ // "|" {fprintf (stderr, "|");}
+ // "<<" {fprintf (stderr, "<<");}
+ // "goto" {fprintf (stderr, "GOTO");}
+ // ":" {fprintf (stderr, ":");}
+ // "%" {fprintf (stderr, "%");}
+ // "volatile" {fprintf (stderr, "VOLATILE");}
+ // "struct" {fprintf (stderr, "STRUCT");}
+ // "enum" {fprintf (stderr, "ENUM");}
 
 
-"//.*$" {.} //On ne fait rien
+"//.*$" {} //On ne fait rien
 
--?[0-9]+  {fprintf (stderr, "chiffre");}
-[a-z]+  {fprintf (stderr, "mot");}
+-?[0-9]+  {fprintf (stderr, "CHIFFRE");}
+[a-z]+  {fprintf (stderr, "MOT");}
+[a-zA-Z]+\w {fprintf (stderr, "VARIABLE");}
 
 .  {error}
 
