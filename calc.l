@@ -38,6 +38,9 @@ include "y.tab.h"
 "," {fprintf (stderr, "COMA");}
 "printf" {fprintf (stderr, "PRINTF");}
 
+"!=" {fprintf (stderr, "DIFF");}
+"++" {fprintf (stderr, "PLONE");}
+
 
 "//.*$" {} //On ne fait rien
 
