@@ -10,9 +10,7 @@ void yyerror(char *s);
 -> Rajouter les priorités des parenthèses pour les calculs mathématiques
 -> Gérer tERROR
 
-
 */
-
 
 
 
@@ -53,7 +51,7 @@ Corps : Bloc tRETURN Expression tPV ;
 
 Bloc : Vide 
 		| Declaration tPV 
-		| Declaration tIS Expression tPV 
+		| Type tVARIABLE tIS Expression tPV 
 		| tVARIABLE tIS Expression tPV 
 		| Print tPV 
 		| BlocIF 
@@ -85,8 +83,8 @@ BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF ;
 
 InitFor : Initialisation tPV Condition tPV Incremente ;
 
-Initialisation : Type tVARIABLE tIS tNB tPV 
-			     | tVARIABLE tIS tNB tPV ;
+Initialisation : Type tVARIABLE tIS Expression tPV 
+			     | tVARIABLE tIS Expression tPV ;
 
 Incremente : tVARIABLE tPLONE 
 			| tVARIABLE tIS tVARIABLE tADD tNB 
