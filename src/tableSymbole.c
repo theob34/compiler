@@ -1,12 +1,15 @@
 #include "tableSymbole.h"
 
+
+// ---- TABLE DES SYMBOLES ---- //
+
 //Ajoute un symbole à la table
 int addSymbole(char name[SIZE_NAME]){
-    //On crée le symbole à partir de ces infos
+    //On crée le symbole à partir de ses infos
     symbole newSymbole ;
     strcpy(newSymbole.name, name);
     newSymbole.address = freePointer ;
-    freePointer = freePointer + 4;
+    freePointer += 4;
     newSymbole.depth = profondeur;
     
     //On ajoute le symbole à la table
@@ -23,10 +26,10 @@ int getAddressSymbole(char name[SIZE_NAME]) {
     //On parcourt la table des symboles à la recherche de celui qui nous intéresse
     do {
         currentSymbole = tableDesSymboles[i++] ;
-    } while ((currentSymbole.name != name) || (i==nbSymboles)) ;
+    } while (!(strcmp(currentSymbole.name,name)) || (i==nbSymboles)) ;
 
     //Si on est sorti en trouvant le nom
-    if (currentSymbole.name == name) {
+    if (strcmp(currentSymbole.name,name)) {
         //Alors je retourne l'addresse
         return tableDesSymboles[i].address;
     }
@@ -52,4 +55,19 @@ void profMoins(){
         }
     }
     profondeur--;
+}
+
+
+// ---- TABLE TEMPORAIRE ---- //
+int addSymboleUnamed() {
+    //On crée le symbole à partir de ces infos
+    symbole newSymbole ;
+    strcpy(newSymbole.name, "");
+    newSymbole.address = freePointerTemp ;
+    freePointerTemp += 4;
+    newSymbole.depth = 0;
+    
+    //On ajoute le symbole à la table
+    tableSymbolesTemporaires[nbSymbolesTemp] = newSymbole ;
+    nbSymbolesTemp++;
 }

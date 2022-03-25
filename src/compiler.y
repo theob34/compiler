@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "tableSymbole.h"
+#include "utils.c"
 int var[26];
 void yyerror(char *s);
 %}
@@ -25,9 +26,12 @@ tPLONE -> Plus One (++)
 tIS -> =
 tEGAL -> ==
 */
-%union { int nb; }
-%token tMAIN tIF tWHILE tFOR tPO tPF tAO tAF tRETURN tPV tELSE tIS tADD tTIMES tDIV tINF tSUP tDIFF tSUB tOU tET tEGAL tINT tCONST tVOID tCOMA tPRINTF tVARIABLE tERROR tPLONE tNB
+%union { int nb; char var[128]}
+%token tMAIN tIF tWHILE tFOR tPO tPF tAO tAF tRETURN tPV tELSE tIS tADD tTIMES tDIV tINF tSUP tDIFF tSUB tOU tET tEGAL tINT tCONST tVOID tCOMA tPRINTF tERROR tPLONE
 %start Main
+%type <nb> Expression
+%token <nb> tNB
+%token <var> tVARIABLE
 %left '+' '-'
 %left '*' '/'
 %%
@@ -37,83 +41,90 @@ Main : Type tMAIN tPO ArgumentOuVide tPF tAO Corps tAF { printf("J'ai reconnu le
 
 ArgumentOuVide : Rien 
 				| Declaration 
-				| Declaration tCOMA Argument ;
+				| Declaration tCOMA Argument 
+				;
 
 Argument : 	Declaration 
-			| Declaration tCOMA Argument ;
+			| Declaration tCOMA Argument 
+			;
 
-Declaration : Type Vars ;
+Declaration : Type Vars 
+			  ;
 
 Vars : tVARIABLE tCOMA Vars
 		| tVARIABLE
+		;
 
-Corps : Bloc tRETURN Expression tPV ;
+Corps : Bloc tRETURN Expression tPV 			
+		;
 
 Bloc : Vide 
 		| Declaration tPV 
-		| Type tVARIABLE tIS Expression tPV 
-		| tVARIABLE tIS Expression tPV 
-		| Print tPV 
+		| Initialisation 			
+		| tPRINTF tPO tVARIABLE tPF tPV		{printf($3);}
 		| BlocIF 
 		| BlocWHILE 
-		| BlocFOR ;
+		| BlocFOR 
+		;
 
-Print : tPRINTF tPO tVARIABLE tPF ;
-
-BlocIF : tIF tPO Condition tPF tAO Bloc tAF BlocELSE ; 
+BlocIF : tIF tPO Condition tPF tAO Bloc tAF BlocELSE 
+		  ; 
 
 Condition : tVARIABLE CondOp tVARIABLE 
 			| tVARIABLE CondOp tNB 
 			| tNB CondOp tVARIABLE 
 			| tNB CondOp tNB
 			| tPO Condition tPF tOU tPO Condition tPF
-			| tPO Condition tPF tET tPO Condition tPF ; 
+			| tPO Condition tPF tET tPO Condition tPF 
+			; 
 
 CondOp : tSUP 
 		 | tEGAL 
 		 | tINF 
-		 | tDIFF;
+		 | tDIFF
+		 ;
 
 BlocELSE : Vide 
-		   | tAO Bloc tAF ;
+		   | tAO Bloc tAF 
+		   ;
 
-BlocWHILE : tWHILE tPO Condition tPF tAO Bloc tAF;
+BlocWHILE : tWHILE tPO Condition tPF tAO Bloc tAF
+			;
 
-BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF ;
+BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF 
+		  ;
 
-InitFor : Initialisation tPV Condition tPV Incremente ;
+InitFor : Initialisation tPV Condition tPV Incremente 	
+		  ;
 
-Initialisation : Type tVARIABLE tIS Expression tPV 
-			     | tVARIABLE tIS Expression tPV ;
+Initialisation : Type tVARIABLE tIS Expression tPV 		{affect($2, $4);}
+			     | tVARIABLE tIS Expression tPV 		{affect($1, $3);}	
+				 ;
 
-Incremente : tVARIABLE tPLONE 
-			| tVARIABLE tIS tVARIABLE tADD tNB 
-			| tVARIABLE tIS tVARIABLE tADD tVARIABLE ; 
+Incremente : tVARIABLE tPLONE 							{affect($1,addplpl($1));}
+			; 
 
 Type : tINT
-       | tCONST tINT ;
+       | tCONST tINT 
+	   ;
 
-Rien : tVOID 
-	   | Vide ;
+Rien : tVOID {}
+	   | Vide {} 
+	   ;
 
-Vide : ;
+Vide : {} 
+		;
 
-Expression : tVARIABLE 
-			| tNB 
-			| Calcul ;
+Expression : Expression tADD Expression			{$$ = add($1, $3);}
+			 | Expression tSUB Expression		{$$ = sub($1, $3);}
+			 | Expression tDIV Expression		{$$ = divi($1, $3);}
+			 | Expression tTIMES Expression		{$$ = times($1, $3);}		 
+		     | tVARIABLE						{$$ =  getAddressSymbole($1);}
+		     | tNB  							{$$ = createAddressForNb($1);} 
+			 ;
 
-Calcul : Calcul Op tVARIABLE 
-	     | Calcul Op tNB 
-		 | tVARIABLE
-		 | tNB ;
-
-Op : tADD
-	| tSUB
-	| tDIV
-	| tTIMES ;
 
 %%
-
 
 /* 
 Calculatrice :	  Calcul Calculatrice | Calcul ;

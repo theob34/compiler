@@ -76,10 +76,10 @@ extern int yydebug;
     tVOID = 282,
     tCOMA = 283,
     tPRINTF = 284,
-    tVARIABLE = 285,
-    tERROR = 286,
-    tPLONE = 287,
-    tNB = 288
+    tERROR = 285,
+    tPLONE = 286,
+    tNB = 287,
+    tVARIABLE = 288
   };
 #endif
 /* Tokens.  */
@@ -110,17 +110,17 @@ extern int yydebug;
 #define tVOID 282
 #define tCOMA 283
 #define tPRINTF 284
-#define tVARIABLE 285
-#define tERROR 286
-#define tPLONE 287
-#define tNB 288
+#define tERROR 285
+#define tPLONE 286
+#define tNB 287
+#define tVARIABLE 288
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
 #line 29 "compiler.y"
- int nb; 
+ int nb; char var[128]
 
 #line 126 "y.tab.h"
 
