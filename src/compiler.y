@@ -67,7 +67,7 @@ Bloc : Vide
 		| BlocFOR 
 		;
 
-BlocIF : tIF tPO Condition tPF tAO Bloc tAF BlocELSE 
+BlocIF : tIF tPO Condition tPF tAO {ts_profPlus();} Bloc tAF {ts_profMoins();} BlocELSE 
 		  ; 
 
 Condition : tVARIABLE CondOp tVARIABLE 
@@ -91,7 +91,7 @@ BlocELSE : Vide
 BlocWHILE : tWHILE tPO Condition tPF tAO Bloc tAF
 			;
 
-BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF 
+BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF 							//Pas obligé 
 		  ;
 
 InitFor : Initialisation tPV Condition tPV Incremente 	
@@ -115,12 +115,12 @@ Rien : tVOID {}
 Vide : {} 
 		;
 
-Expression : Expression tADD Expression			{$$ = add($1, $3);}
-			 | Expression tSUB Expression		{$$ = sub($1, $3);}
-			 | Expression tDIV Expression		{$$ = divi($1, $3);}
-			 | Expression tTIMES Expression		{$$ = times($1, $3);}		 
-		     | tVARIABLE						{$$ =  getAddressSymbole($1);}
-		     | tNB  							{$$ = createAddressForNb($1);} 
+Expression : Expression tADD Expression			{ti_addArith();}
+			 | Expression tSUB Expression		{ti_subArith();}
+			 | Expression tDIV Expression		{ti_divArith();}
+			 | Expression tTIMES Expression		{ti_mulArith();}		 
+		     | tVARIABLE						{ti_varArith($1);}
+		     | tNB  							{ti_nbArith($1);} 
 			 ;
 
 

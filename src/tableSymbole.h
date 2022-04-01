@@ -20,16 +20,22 @@ int nbSymbolesTemp = 0 ;
 
 // ---- TABLE DES SYMBOLES ---- //
 //Ajoute un symbole à la table
-int addSymbole(char name[SIZE_NAME]);
+int ts_addSymbole(char name[SIZE_NAME]);
 //Retourne l'addresse d'un symbole dans la table à partir de son nom
-int getAddressSymbole(char name[SIZE_NAME]);
+int ts_getAddressSymbole(char name[SIZE_NAME]);
 
 //Incrément de la prodondeur du scope
-void profPlus();
+void ts_profPlus();
 //Décrément de la profondeur du scope
-void profMoins();
+void ts_profMoins();
 
 // ---- TABLE TEMPORAIRE ---- //
-int addSymboleUnamed();
+int ts_addSymboleUnamed();
+
+int ts_getLastTmpAddr();
+
+void ts_freeLastTmp();
+
+int ts_newTmp();
 
 #endif

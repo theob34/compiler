@@ -1,10 +1,12 @@
 #include "tableSymbole.h"
+#include <stdlib.h>
+
 
 
 // ---- TABLE DES SYMBOLES ---- //
 
 //Ajoute un symbole à la table
-int addSymbole(char name[SIZE_NAME]){
+int ts_addSymbole(char name[SIZE_NAME]){
     //On crée le symbole à partir de ses infos
     symbole newSymbole ;
     strcpy(newSymbole.name, name);
@@ -18,7 +20,7 @@ int addSymbole(char name[SIZE_NAME]){
 }
 
 //Retourne l'addresse d'un symbole dans la table à partir de son nom
-int getAddressSymbole(char name[SIZE_NAME]) {
+int ts_getAddressSymbole(char name[SIZE_NAME]) {
     
     int i = 0;
     symbole currentSymbole;
@@ -40,14 +42,14 @@ int getAddressSymbole(char name[SIZE_NAME]) {
 }
 
 //Incrément de la prodondeur du scope
-void profPlus(){
+void ts_profPlus(){
     profondeur++ ;
 }
 
 //Décrément de la profondeur du scope
 //Possibilité d'optimiser en faisant un while et en commencant à l'envers car 
 //les symboles sont stockés par paquets de même profondeur
-void profMoins(){
+void ts_profMoins(){
     for (int i = 0; i < nbSymboles; i++) {
         if (tableDesSymboles[i].depth == profondeur) {
             nbSymboles--;
@@ -57,9 +59,7 @@ void profMoins(){
     profondeur--;
 }
 
-
-// ---- TABLE TEMPORAIRE ---- //
-int addSymboleUnamed() {
+int ts_addSymboleUnamed() {
     //On crée le symbole à partir de ces infos
     symbole newSymbole ;
     strcpy(newSymbole.name, "");
@@ -71,3 +71,25 @@ int addSymboleUnamed() {
     tableSymbolesTemporaires[nbSymbolesTemp] = newSymbole ;
     nbSymbolesTemp++;
 }
+
+int ts_getLastTmpAddr() { //Retourne l'adresse de la dernière variable temporaire
+    return freePointerTemp; //pas sure
+}
+
+
+void ts_freeLastTmp() {     
+    free(freePointerTemp);
+    freePointerTemp -= 4;
+    nbSymbolesTemp--;
+}
+
+int ts_newTmp() {           // Nul/20, je suis partie à autre chose
+    nbSymbolesTemp++;
+    freePointerTemp += 4;
+    nbSymbolesTemp++;
+       
+    return freePointerTemp;
+}
+
+
+//+ et - 4 ça marche pas, on a pas que un int à gérer, c'est un symbole qui est la sommme de plein de trucs
