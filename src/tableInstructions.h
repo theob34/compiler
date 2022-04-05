@@ -1,26 +1,23 @@
-#define SIZE_INSTR 128
+#include "tableSymbole.h"
 #define SIZE_TABLE 100
 #ifndef tableInstructions
 #define tableInstructions
 
-typedef struct instruction{
-    char inst[SIZE_INSTR] ;
-    int destAddress ;
-    int addr1 ;
-    int addr2 ;
-} instruction ;
+// typedef enum instruction {ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI} instruction;
 
-instruction tableInstruction[SIZE_TABLE] ;
+typedef struct box {
+    // instruction instruction;
+    char instruction;
+    int destAddress;
+    int addr1;
+    int addr2;
+} box ;
+
+box tableInstruction[SIZE_TABLE] ;
 
 int freePtr = 0 ; //Adresse de la première case mémoire disponible pour mon programme
 int nbInstructions = 0 ; //Nombre d'instructions dans la table
 
-void ti_addArith() ; 
-void ti_mulArith() ;
-void ti_divArith() ;
-void ti_subArith() ;
+int ti_insert(/*instruction*/ char instruction, int argu1, int argu2, int argu3) ;
 
-void ti_nbArith(int v) ;
-void ti_varArith(int v) ;
-
-void ti_insert(char op, int addr_dest, int addr1, int addr2 ) ;
+#endif

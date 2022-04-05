@@ -1,12 +1,15 @@
-#include "tableSortieASM.h"
+#include "tableSymbole.h"
+#include "tableInstructions.h"
+
 #ifndef utils
 #define utils
 
-int add(int a, int b);
-int sub(int a, int b);
-int divi(int a, int b);
-int times(int a, int b);
-int createAddressForNb(int a);
-int addplpl(int a);
+void addArith();
+void subArith();
+void mulArith();
+void divArith();
+void nbArith(int value);
+void addplpl();
+void varArith(char value);
 
 #endif

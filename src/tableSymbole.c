@@ -70,26 +70,19 @@ int ts_addSymboleUnamed() {
     //On ajoute le symbole à la table
     tableSymbolesTemporaires[nbSymbolesTemp] = newSymbole ;
     nbSymbolesTemp++;
+
+    return &newSymbole.address ;
 }
 
 int ts_getLastTmpAddr() { //Retourne l'adresse de la dernière variable temporaire
-    return freePointerTemp; //pas sure
+    return &freePointerTemp; //pas sure
 }
 
 
-void ts_freeLastTmp() {     
-    free(freePointerTemp);
+void ts_freeLastTmp() {
     freePointerTemp -= 4;
     nbSymbolesTemp--;
 }
 
-int ts_newTmp() {           // Nul/20, je suis partie à autre chose
-    nbSymbolesTemp++;
-    freePointerTemp += 4;
-    nbSymbolesTemp++;
-       
-    return freePointerTemp;
-}
 
-
-//+ et - 4 ça marche pas, on a pas que un int à gérer, c'est un symbole qui est la sommme de plein de trucs
+// + et - 4 ça marche pas, on a pas que un int à gérer, c'est un symbole qui est la sommme de plein de trucs

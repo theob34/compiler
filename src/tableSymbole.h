@@ -36,6 +36,4 @@ int ts_getLastTmpAddr();
 
 void ts_freeLastTmp();
 
-int ts_newTmp();
-
 #endif

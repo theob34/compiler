@@ -1,38 +1,46 @@
 #include "utils.h"
-#include "tableSymbole.h"
-
 
 // ---- FONCTIONS POUR LES OPERATIONS ---- //
-int add(int a, int b) {
-    int addressResult = addSymboleUnamed();
-    
-    printf("ADD %d %d %d", addressResult, a, b);
-    return addressResult;
+void addArith(){
+    int addr = ts_getLastTmpAddr();
+    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
+    ts_freeLastTmp();
+    ti_insert("ADD", stl_addr, stl_addr, addr); 
 }
-int sub(int a, int b) {
-    int addressResult = addSymboleUnamed();
-    printf("SUB %d %d %d", addressResult, a, b);
-    return addressResult;
+
+void mulArith() {
+    int addr = ts_getLastTmpAddr();
+    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
+    ts_freeLastTmp();
+    ti_insert("MUL", stl_addr, stl_addr, addr); 
 }
-int divi(int a, int b) {
-    int addressResult = addSymboleUnamed();
-    printf("DIV %d %d %d", addressResult, a, b);
-    return addressResult;
+
+void divArith() {
+    int addr = ts_getLastTmpAddr();
+    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
+    ts_freeLastTmp();
+    ti_insert("DIV", stl_addr, stl_addr, addr); 
 }
-int times(int a, int b){
-    int addressResult = addSymboleUnamed();
-    printf("MUL %d %d %d", addressResult, a, b);
-    return addressResult;
+
+void subArith() {
+    int addr = ts_getLastTmpAddr();
+    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
+    ts_freeLastTmp();
+    ti_insert("SUB", stl_addr, stl_addr, addr); 
 }
-int createAddressForNb(int a) {
-    int addressResult = addSymboleUnamed();
-    printf("AFC %d %d", addressResult, a);
-    return addressResult;
+void nbArith(int value) {
+    int addr = ts_addSymboleUnamed();
+    ti_insert("AFC", addr, value, 0);
 }
-int addplpl(int a) {
+
+void addplpl() {
     int addressOne = addSymboleUnamed();
-    printf("AFC %d 1", addressOne);
-    return add(a, addressOne);
+    ti_insert("AFC", addressOne, 1, 0);
+}
+
+void varArith(char value) {
+    int addr = ts_addSymboleUnamed();
+    ti_insert("MOV", addr, ts_getAddressSymbole(value), 0);
 }
 
 

@@ -79,9 +79,9 @@ Condition : tVARIABLE CondOp tVARIABLE
 			; 
 
 CondOp : tSUP 
-		 | tEGAL 
-		 | tINF 
-		 | tDIFF
+		 | tEGAL {ti_equal();}
+		 | tINF {ti_inf();}
+		 | tDIFF {ti_diff();}
 		 ;
 
 BlocELSE : Vide 
@@ -101,7 +101,7 @@ Initialisation : Type tVARIABLE tIS Expression tPV 		{affect($2, $4);}
 			     | tVARIABLE tIS Expression tPV 		{affect($1, $3);}	
 				 ;
 
-Incremente : tVARIABLE tPLONE 							{affect($1,addplpl($1));}
+Incremente : tVARIABLE tPLONE 							{affect($1, addplpl($1));}
 			; 
 
 Type : tINT
@@ -115,10 +115,10 @@ Rien : tVOID {}
 Vide : {} 
 		;
 
-Expression : Expression tADD Expression			{ti_addArith();}
-			 | Expression tSUB Expression		{ti_subArith();}
-			 | Expression tDIV Expression		{ti_divArith();}
-			 | Expression tTIMES Expression		{ti_mulArith();}		 
+Expression : Expression tADD Expression			{addArith();}
+			 | Expression tSUB Expression		{subArith();}
+			 | Expression tDIV Expression		{divArith();}
+			 | Expression tTIMES Expression		{mulArith();}		 
 		     | tVARIABLE						{ti_varArith($1);}
 		     | tNB  							{ti_nbArith($1);} 
 			 ;
