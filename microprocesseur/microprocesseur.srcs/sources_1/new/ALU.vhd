@@ -60,10 +60,10 @@ begin
     --    -S_DIV <= ;
 
             
-    S_AUX <=    S_ADD when (Ctrl_Alu = "00") else
-                S_SUB when (Ctrl_Alu = "01") else
-                S_MUL when (Ctrl_Alu = "10") else
-               -- S_DIV() when op = (Ctrl_Alu = "11") else
+    S_AUX <=    S_ADD when (Ctrl_Alu = "001") else
+                S_SUB when (Ctrl_Alu = "010") else
+                S_MUL when (Ctrl_Alu = "011") else
+               -- S_DIV() when op = (Ctrl_Alu = "100") else
                "00000000" ;
                 
     S <= S_AUX;

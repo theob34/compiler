@@ -57,7 +57,7 @@ begin
             --lecture
             if (RW = '1') then 
                 DOUT <= mem(to_integer(unsigned(Addr))) ;
-            --eciture
+            --ecriture
             elsif (RW = '0') then 
                 mem(to_integer(unsigned(Addr))) <= DIN; 
             end if ;   

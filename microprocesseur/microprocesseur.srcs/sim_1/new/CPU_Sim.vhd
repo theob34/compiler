@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 09.05.2022 14:46:57
+-- Create Date: 18.05.2022 12:01:54
 -- Design Name: 
--- Module Name: InstructionMemory - Behavioral
+-- Module Name: CPU_Sim - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -20,9 +20,7 @@
 
 
 library IEEE;
-use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -33,22 +31,39 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity InstructionMemory is
-    Port ( Addr : in STD_LOGIC_VECTOR (7 downto 0);
-           CLK : in STD_LOGIC;
-           DOUT : out STD_LOGIC_VECTOR (31 downto 0));
-end InstructionMemory;
+entity CPU_Sim is
+--  Port ( );
+end CPU_Sim;
 
- architecture Behavioral of InstructionMemory is
-    type memory is array (255 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
-    signal mem : memory := ((X"ff000000"), (X"08010200"), others => X("ff000000"));
+architecture Behavioral of CPU_Sim is
+    signal CLK, RST : STD_LOGIC;
+    
+    component CPU
+        Port (  CLK :  in STD_LOGIC;
+                RST : in STD_LOGIC);
+    end component;
 
 begin
+
     process
-    begin
-        wait until CLK'event and CLK='1' ;
-            DOUT <= mem(to_integer(unsigned(Addr))) ;
-    
+        begin
+        wait for 10ns;
+        if CLK = '0' then
+            CLK <= '1';
+        else
+            CLK <= '0';
+        end if;
+        
     end process;
+    
+    process
+        begin
+        wait for 100ns;
+        RST <= '1';
+        wait for 20ns;
+        RST <= '0';
+        wait for 1000000ns;
+    end process;
+
 
 end Behavioral;

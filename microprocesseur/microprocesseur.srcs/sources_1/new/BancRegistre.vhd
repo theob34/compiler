@@ -57,13 +57,10 @@ begin
             end if;
             
             if (W = '1') then 
-                reg(to_integer(unsigned(Addr_W))) <= DATA;
-                if (Addr_W = Addr_A) then QA <= DATA;
-                elsif (Addr_W = Addr_B) then QB <= DATA;
-                end if;           
+                reg(to_integer(unsigned(Addr_W))) <= DATA;       
             end if;   
     end process;
-    QA <= reg(to_integer(unsigned(Addr_A))) ;
-    QB <= reg(to_integer(unsigned(Addr_B))) ;
+    QA <= reg(to_integer(unsigned(Addr_A))) when W = '0' or Addr_W /= Addr_A else DATA;
+    QB <= reg(to_integer(unsigned(Addr_B))) when W = '0' or Addr_W /= Addr_B else DATA ;
 
 end Behavioral;
