@@ -97,11 +97,11 @@ BlocFOR : tFOR tPO InitFor tPF tAO Bloc tAF 							//Pas obligé
 InitFor : Initialisation tPV Condition tPV Incremente 	
 		  ;
 
-Initialisation : Type tVARIABLE tIS Expression tPV 		{affect($2, $4);}
+Initialisation : Type tVARIABLE tIS Expression tPV 		{ affect($2, $4);} 
 			     | tVARIABLE tIS Expression tPV 		{affect($1, $3);}	
 				 ;
 
-Incremente : tVARIABLE tPLONE 							{affect($1, addplpl($1));}
+Incremente : tVARIABLE tPLONE 							{addplpl();}
 			; 
 
 Type : tINT
@@ -119,8 +119,8 @@ Expression : Expression tADD Expression			{addArith();}
 			 | Expression tSUB Expression		{subArith();}
 			 | Expression tDIV Expression		{divArith();}
 			 | Expression tTIMES Expression		{mulArith();}		 
-		     | tVARIABLE						{ti_varArith($1);}
-		     | tNB  							{ti_nbArith($1);} 
+		     | tVARIABLE						{varArith($1);}
+		     | tNB  							{nbArith($1);} 
 			 ;
 
 

@@ -1,4 +1,6 @@
 #include "utils.h"
+#include <stdio.h>
+
 
 // ---- FONCTIONS POUR LES OPERATIONS ---- //
 void addArith(){
@@ -40,7 +42,31 @@ void addplpl() {
 
 void varArith(char value) {
     int addr = ts_addSymboleUnamed();
-    ti_insert("MOV", addr, ts_getAddressSymbole(value), 0);
+    ti_insert("MOV", addr, ts_getAddressSymbole(value), NULL);
 }
 
+void affect(char var, int value) {
+    int addr = ts_getLastTmpAddr();
+    int addr_var = ts_getAddressSymbole(var);
+    ti_insert("AFC", addr_var, addr, 0)
+}
+
+
+void diff() {
+
+}
+void sup() {
+
+}
+void inf() {
+
+}
+
+void equal() {
+
+}
+
+// void patch(int from, int to) {               En plus je sais pas ce que c'est ça
+// 	asm[from][1] = to ;
+// 	}
 

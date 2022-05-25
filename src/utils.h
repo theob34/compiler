@@ -11,5 +11,6 @@ void divArith();
 void nbArith(int value);
 void addplpl();
 void varArith(char value);
+void affect(char var, int value);
 
 #endif
