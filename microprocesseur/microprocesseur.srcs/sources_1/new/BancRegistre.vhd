@@ -53,10 +53,8 @@ begin
     process
     begin
         wait until CLK'event and CLK='1' ;
-            if (RST='0') then reg <= (others => X"00"); 
-            end if;
-            
-            if (W = '1') then 
+            if (RST='1') then reg <= (others => X"00"); 
+            elsif (W = '1') then 
                 reg(to_integer(unsigned(Addr_W))) <= DATA;       
             end if;   
     end process;

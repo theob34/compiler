@@ -51,16 +51,12 @@ begin
     begin
         wait until CLK'event and CLK='1' ;
             --reset
-            if (RST='0') then mem <= (others => X"00");
-            end if;
-            
+            if (RST='1') then mem <= (others => X"00");
             --lecture
-            if (RW = '1') then 
-                DOUT <= mem(to_integer(unsigned(Addr))) ;
-            --ecriture
-            elsif (RW = '0') then 
-                mem(to_integer(unsigned(Addr))) <= DIN; 
+            elsif (RW = '1') then
+                mem(to_integer(unsigned(Addr(3 downto 0)))) <= DIN; 
             end if ;   
     end process ;
+    DOUT <= mem(to_integer(unsigned(Addr(3 downto 0)))) ;
 
 end Behavioral;

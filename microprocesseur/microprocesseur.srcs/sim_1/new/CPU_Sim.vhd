@@ -20,7 +20,9 @@
 
 
 library IEEE;
+use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -45,6 +47,10 @@ architecture Behavioral of CPU_Sim is
 
 begin
 
+    OurCPU : CPU port map(
+            CLK => CLK,
+            RST => RST);
+            
     process
         begin
         wait for 10ns;

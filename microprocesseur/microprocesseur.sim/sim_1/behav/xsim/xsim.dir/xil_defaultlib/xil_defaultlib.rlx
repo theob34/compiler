@@ -2,4 +2,10 @@
 2018.2
 Jun 14 2018
 20:07:38
-/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sim_1/new/CPU_Sim.vhd,1652868388,vhdl,,,,cpu_sim,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sim_1/new/CPU_Sim.vhd,1653484979,vhdl,,,,cpu_sim,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/ALU.vhd,1653488344,vhdl,,,,alu,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/BancRegistre.vhd,1653486601,vhdl,,,,bancregistre,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/CPU.vhd,1653487583,vhdl,,,,cpu,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/DataMemory.vhd,1653487469,vhdl,,,,datamemory,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/InstructionMemory.vhd,1653488430,vhdl,,,,instructionmemory,,,,,,,,
+/home/chenel/4A/Automates/compiler/microprocesseur/microprocesseur.srcs/sources_1/new/Pipeline.vhd,1652794589,vhdl,,,,pipeline,,,,,,,,

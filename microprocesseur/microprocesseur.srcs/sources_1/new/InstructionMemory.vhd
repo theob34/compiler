@@ -40,10 +40,11 @@ entity InstructionMemory is
 end InstructionMemory;
 
  architecture Behavioral of InstructionMemory is
-    type memory is array (255 downto 0) of STD_LOGIC_VECTOR (31 downto 0);
-    signal mem : memory := ((X"ff000000"), (X"08010200"), others => X("ff000000"));
+    type memory is array (0 to 255) of STD_LOGIC_VECTOR (31 downto 0);
+    signal mem : memory := ( x"00000000", x"06030200", x"06050400", x"00000000", x"00000000", x"00000000", X"05090500", X"06031000", x"00000000", x"00000000", x"00000000",  x"00000000", x"010a0305", x"08110300",  x"00000000",  x"00000000",  x"00000000",  x"070b1100", x"020c0305",  x"00000000",  x"00000000",  x"00000000", x"030d0c0a",  others => (X"05090500"));
 
 begin
+    
     process
     begin
         wait until CLK'event and CLK='1' ;

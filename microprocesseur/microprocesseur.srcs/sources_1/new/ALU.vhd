@@ -46,11 +46,11 @@ end ALU;
 
 architecture Behavioral of ALU is
 
-signal S_ADD : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
-signal S_MUL : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
-signal S_DIV : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
-signal S_SUB : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
-signal S_AUX : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
+signal S_ADD : STD_LOGIC_VECTOR (8 downto 0);
+signal S_MUL : STD_LOGIC_VECTOR (15 downto 0);
+signal S_DIV : STD_LOGIC_VECTOR (7 downto 0);
+signal S_SUB : STD_LOGIC_VECTOR (8 downto 0);
+signal S_AUX : STD_LOGIC_VECTOR (7 downto 0);
 
 begin
 
@@ -60,9 +60,9 @@ begin
     --    -S_DIV <= ;
 
             
-    S_AUX <=    S_ADD when (Ctrl_Alu = "001") else
-                S_SUB when (Ctrl_Alu = "010") else
-                S_MUL when (Ctrl_Alu = "011") else
+    S_AUX <=    S_ADD(7 downto 0) when (Ctrl_Alu = "001") else
+                S_SUB(8 downto 1) when (Ctrl_Alu = "011") else
+                S_MUL(7 downto 0) when (Ctrl_Alu = "010") else
                -- S_DIV() when op = (Ctrl_Alu = "100") else
                "00000000" ;
                 

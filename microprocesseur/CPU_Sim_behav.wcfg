@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="CPU_Sim_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="CPU_Sim" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="349670000fs"></ZoomStartTime>
+      <ZoomEndTime time="812670001fs"></ZoomEndTime>
+      <Cursor1Time time="450170000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wave_markers>
+      <marker label="" time="1000000000" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/CPU_Sim/CLK">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/CPU_Sim/RST">
+      <obj_property name="ElementShortName">RST</obj_property>
+      <obj_property name="ObjectShortName">RST</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group73">
+      <obj_property name="label">UAL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/A">
+         <obj_property name="ElementShortName">A[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/B">
+         <obj_property name="ElementShortName">B[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S">
+         <obj_property name="ElementShortName">S[7:0]</obj_property>
+         <obj_property name="ObjectShortName">S[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/Ctrl_Alu">
+         <obj_property name="ElementShortName">Ctrl_Alu[2:0]</obj_property>
+         <obj_property name="ObjectShortName">Ctrl_Alu[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S_ADD">
+         <obj_property name="ElementShortName">S_ADD[8:0]</obj_property>
+         <obj_property name="ObjectShortName">S_ADD[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S_MUL">
+         <obj_property name="ElementShortName">S_MUL[15:0]</obj_property>
+         <obj_property name="ObjectShortName">S_MUL[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S_DIV">
+         <obj_property name="ElementShortName">S_DIV[7:0]</obj_property>
+         <obj_property name="ObjectShortName">S_DIV[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S_SUB">
+         <obj_property name="ElementShortName">S_SUB[8:0]</obj_property>
+         <obj_property name="ObjectShortName">S_SUB[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/UAL/S_AUX">
+         <obj_property name="ElementShortName">S_AUX[7:0]</obj_property>
+         <obj_property name="ObjectShortName">S_AUX[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group118">
+      <obj_property name="label">INSTRUCTIONS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/instructMemory/Addr">
+         <obj_property name="ElementShortName">Addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/instructMemory/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/instructMemory/DOUT">
+         <obj_property name="ElementShortName">DOUT[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DOUT[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/instructMemory/mem">
+         <obj_property name="ElementShortName">mem[0:255][31:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[0:255][31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group83">
+      <obj_property name="label">LIDI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/pipeLIDI/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/OP_IN">
+         <obj_property name="ElementShortName">OP_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/A_IN">
+         <obj_property name="ElementShortName">A_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/B_IN">
+         <obj_property name="ElementShortName">B_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/C_IN">
+         <obj_property name="ElementShortName">C_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/OP_OUT">
+         <obj_property name="ElementShortName">OP_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/A_OUT">
+         <obj_property name="ElementShortName">A_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/B_OUT">
+         <obj_property name="ElementShortName">B_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeLIDI/C_OUT">
+         <obj_property name="ElementShortName">C_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_OUT[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group93">
+      <obj_property name="label">DIEX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/pipeDIEX/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/OP_IN">
+         <obj_property name="ElementShortName">OP_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/A_IN">
+         <obj_property name="ElementShortName">A_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/B_IN">
+         <obj_property name="ElementShortName">B_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/C_IN">
+         <obj_property name="ElementShortName">C_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/OP_OUT">
+         <obj_property name="ElementShortName">OP_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/A_OUT">
+         <obj_property name="ElementShortName">A_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/B_OUT">
+         <obj_property name="ElementShortName">B_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeDIEX/C_OUT">
+         <obj_property name="ElementShortName">C_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_OUT[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group103">
+      <obj_property name="label">EXMEM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/OP_IN">
+         <obj_property name="ElementShortName">OP_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/A_IN">
+         <obj_property name="ElementShortName">A_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/B_IN">
+         <obj_property name="ElementShortName">B_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/C_IN">
+         <obj_property name="ElementShortName">C_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/OP_OUT">
+         <obj_property name="ElementShortName">OP_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/A_OUT">
+         <obj_property name="ElementShortName">A_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/B_OUT">
+         <obj_property name="ElementShortName">B_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeEXMEM/C_OUT">
+         <obj_property name="ElementShortName">C_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_OUT[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group113">
+      <obj_property name="label">MEMRE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/OP_IN">
+         <obj_property name="ElementShortName">OP_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/A_IN">
+         <obj_property name="ElementShortName">A_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/B_IN">
+         <obj_property name="ElementShortName">B_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/C_IN">
+         <obj_property name="ElementShortName">C_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/OP_OUT">
+         <obj_property name="ElementShortName">OP_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OP_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/A_OUT">
+         <obj_property name="ElementShortName">A_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/B_OUT">
+         <obj_property name="ElementShortName">B_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">B_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/pipeMEMRE/C_OUT">
+         <obj_property name="ElementShortName">C_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">C_OUT[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group129">
+      <obj_property name="label">REGS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/Addr_A">
+         <obj_property name="ElementShortName">Addr_A[3:0]</obj_property>
+         <obj_property name="ObjectShortName">Addr_A[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/Addr_B">
+         <obj_property name="ElementShortName">Addr_B[3:0]</obj_property>
+         <obj_property name="ObjectShortName">Addr_B[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/Addr_W">
+         <obj_property name="ElementShortName">Addr_W[3:0]</obj_property>
+         <obj_property name="ObjectShortName">Addr_W[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/regBench/W">
+         <obj_property name="ElementShortName">W</obj_property>
+         <obj_property name="ObjectShortName">W</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/DATA">
+         <obj_property name="ElementShortName">DATA[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DATA[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/regBench/RST">
+         <obj_property name="ElementShortName">RST</obj_property>
+         <obj_property name="ObjectShortName">RST</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/regBench/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/QA">
+         <obj_property name="ElementShortName">QA[7:0]</obj_property>
+         <obj_property name="ObjectShortName">QA[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/QB">
+         <obj_property name="ElementShortName">QB[7:0]</obj_property>
+         <obj_property name="ObjectShortName">QB[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/regBench/reg">
+         <obj_property name="ElementShortName">reg[15:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">reg[15:0][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group153">
+      <obj_property name="label">DATA</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/dataMem/Addr">
+         <obj_property name="ElementShortName">Addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/dataMem/DIN">
+         <obj_property name="ElementShortName">DIN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DIN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/dataMem/RW">
+         <obj_property name="ElementShortName">RW</obj_property>
+         <obj_property name="ObjectShortName">RW</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/dataMem/RST">
+         <obj_property name="ElementShortName">RST</obj_property>
+         <obj_property name="ObjectShortName">RST</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/CPU_Sim/OurCPU/dataMem/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/dataMem/DOUT">
+         <obj_property name="ElementShortName">DOUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">DOUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/CPU_Sim/OurCPU/dataMem/mem">
+         <obj_property name="ElementShortName">mem[15:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[15:0][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -169,7 +169,7 @@ begin
         OP_IN => OP1IN,
         B_IN => B1IN,
         C_IN => C1IN,
-        A_OUT => C1OUT,
+        A_OUT => A1OUT,
         B_OUT => B1OUT,
         OP_OUT => OP1OUT,
         C_OUT => C1OUT
@@ -181,7 +181,7 @@ begin
         OP_IN => OP2IN,
         B_IN => B2IN,
         C_IN => C2IN,
-        A_OUT => C2OUT,
+        A_OUT => A2OUT,
         B_OUT => B2OUT,
         OP_OUT => OP2OUT,
         C_OUT => C2OUT
@@ -193,7 +193,7 @@ begin
         OP_IN => OP3IN,
         B_IN => B3IN,
         C_IN => C3IN,
-        A_OUT => C3OUT,
+        A_OUT => A3OUT,
         B_OUT => B3OUT,
         OP_OUT => OP3OUT,
         C_OUT => C3OUT
@@ -205,7 +205,7 @@ begin
         OP_IN => OP4IN,
         B_IN => B4IN,
         C_IN => C4IN,
-        A_OUT => C4OUT,
+        A_OUT => A4OUT,
         B_OUT => B4OUT,
         OP_OUT => OP4OUT,
         C_OUT => C4OUT
@@ -217,25 +217,27 @@ begin
             wait until CLK'event and CLK='1';
             if (RST = '1') then
                 ip <= "00000000";
+            else
+                ip <= ip + 1;
             end if;
-            ip <= ip + 1;
     end process;
     
     --Mémoire des instructions
     Addr_InstMem <= ip;
     --1er pipeline
-    A1IN <= DOUT_InstMem(7 downto 0);
-    OP1IN <= DOUT_InstMem(15 downto 8);
-    B1IN <= DOUT_InstMem(23 downto 16);
-    C1IN <= DOUT_InstMem(31 downto 24);
+    C1IN <= DOUT_InstMem(7 downto 0);
+    B1IN <= DOUT_InstMem(15 downto 8);
+    A1IN <= DOUT_InstMem(23 downto 16);
+    OP1IN   <= DOUT_InstMem(31 downto 24);
     
     --Banc de registre
     Addr_A <= B1OUT(3 downto 0) ;  
+    Addr_B <= C1OUT(3 downto 0) ;  
     --Si STORE on écrit pas
     --Sinon on écrit
-    W <=    '0' when OP4OUT = "00001000" else
-            '1';
-    Addr_W <=   A4OUT;
+    W <=    '1' when OP4OUT = x"01" or OP4OUT = x"02" or OP4OUT = x"03" or OP4OUT = x"04" or OP4OUT = x"05" or OP4OUT = x"06" or OP4OUT = x"07" else
+            '0';
+    Addr_W <= A4OUT(3 downto 0);
     DATA_Bench <= B4OUT ;
     
     --2ème pipeline
@@ -277,7 +279,7 @@ begin
     DIN_DataMem <=  B3OUT when OP3OUT = "00001000";
     --Si LOAD on lit dans DataMem
     --Sinon non
-    RW <=   '1' when OP3OUT = "00000111" else
+    RW <=   '1' when OP3OUT = x"08" else
             '0';
     
     --4ème pipeline
