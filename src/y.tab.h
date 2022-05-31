@@ -52,68 +52,64 @@ extern int yydebug;
     tMAIN = 258,
     tIF = 259,
     tWHILE = 260,
-    tFOR = 261,
-    tPO = 262,
-    tPF = 263,
-    tAO = 264,
-    tAF = 265,
-    tRETURN = 266,
-    tPV = 267,
-    tELSE = 268,
-    tIS = 269,
-    tADD = 270,
-    tTIMES = 271,
-    tDIV = 272,
-    tINF = 273,
-    tSUP = 274,
-    tDIFF = 275,
-    tSUB = 276,
-    tOU = 277,
-    tET = 278,
-    tEGAL = 279,
-    tINT = 280,
-    tCONST = 281,
-    tVOID = 282,
-    tCOMA = 283,
-    tPRINTF = 284,
-    tERROR = 285,
-    tPLONE = 286,
-    tNB = 287,
-    tVARIABLE = 288
+    tPO = 261,
+    tPF = 262,
+    tAO = 263,
+    tAF = 264,
+    tRETURN = 265,
+    tPV = 266,
+    tELSE = 267,
+    tIS = 268,
+    tTIMES = 269,
+    tDIV = 270,
+    tADD = 271,
+    tINF = 272,
+    tSUP = 273,
+    tDIFF = 274,
+    tSUB = 275,
+    tOU = 276,
+    tET = 277,
+    tEGAL = 278,
+    tINT = 279,
+    tCONST = 280,
+    tVOID = 281,
+    tCOMA = 282,
+    tPRINTF = 283,
+    tERROR = 284,
+    tNB = 285,
+    tVARIABLE = 286
   };
 #endif
 /* Tokens.  */
 #define tMAIN 258
 #define tIF 259
 #define tWHILE 260
-#define tFOR 261
-#define tPO 262
-#define tPF 263
-#define tAO 264
-#define tAF 265
-#define tRETURN 266
-#define tPV 267
-#define tELSE 268
-#define tIS 269
-#define tADD 270
-#define tTIMES 271
-#define tDIV 272
-#define tINF 273
-#define tSUP 274
-#define tDIFF 275
-#define tSUB 276
-#define tOU 277
-#define tET 278
-#define tEGAL 279
-#define tINT 280
-#define tCONST 281
-#define tVOID 282
-#define tCOMA 283
-#define tPRINTF 284
-#define tERROR 285
-#define tPLONE 286
-#define tNB 287
-#define tVARIABLE 288
+#define tPO 261
+#define tPF 262
+#define tAO 263
+#define tAF 264
+#define tRETURN 265
+#define tPV 266
+#define tELSE 267
+#define tIS 268
+#define tTIMES 269
+#define tDIV 270
+#define tADD 271
+#define tINF 272
+#define tSUP 273
+#define tDIFF 274
+#define tSUB 275
+#define tOU 276
+#define tET 277
+#define tEGAL 278
+#define tINT 279
+#define tCONST 280
+#define tVOID 281
+#define tCOMA 282
+#define tPRINTF 283
+#define tERROR 284
+#define tNB 285
+#define tVARIABLE 286
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -122,7 +118,7 @@ union YYSTYPE
 #line 29 "compiler.y"
  int nb; char var[128]
 
-#line 126 "y.tab.h"
+#line 122 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

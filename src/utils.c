@@ -1,72 +1,108 @@
 #include "utils.h"
 #include <stdio.h>
 
+//ON A DU MAL A SAISIR : 
+//Comment on récupère la valeur depuis l'adresse ?
+
 
 // ---- FONCTIONS POUR LES OPERATIONS ---- //
-void addArith(){
-    int addr = ts_getLastTmpAddr();
-    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
-    ts_freeLastTmp();
-    ti_insert("ADD", stl_addr, stl_addr, addr); 
+int addArith(int addr1, int addr2){
+    int addr_dest = ts_addSymboleUnamed();
+    ti_insert("ADD", addr_dest, addr1, addr2); 
+    return addr_dest;
 }
 
-void mulArith() {
-    int addr = ts_getLastTmpAddr();
-    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
-    ts_freeLastTmp();
-    ti_insert("MUL", stl_addr, stl_addr, addr); 
+int mulArith(int addr1, int addr2) {
+    int addr_dest = ts_addSymboleUnamed();
+    ti_insert("MUL", addr_dest, addr1, addr2); 
+    return addr_dest;
 }
 
-void divArith() {
-    int addr = ts_getLastTmpAddr();
-    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
-    ts_freeLastTmp();
-    ti_insert("DIV", stl_addr, stl_addr, addr); 
+int divArith(int addr1, int addr2) {
+    int addr_dest = ts_addSymboleUnamed();
+    ti_insert("DIV", addr_dest, addr1, addr2); 
+    return addr_dest;
 }
 
-void subArith() {
-    int addr = ts_getLastTmpAddr();
-    int stl_addr = addr-1; //on récupère l'adresse de l'avant dernière variable temporaire
-    ts_freeLastTmp();
-    ti_insert("SUB", stl_addr, stl_addr, addr); 
+int subArith(int addr1, int addr2) {
+    int addr_dest = ts_addSymboleUnamed();
+    ti_insert("SOU", addr_dest, addr1, addr2); 
+    return addr_dest;
 }
-void nbArith(int value) {
+
+int nbArith(int value) {
+    //printf("1\n");
     int addr = ts_addSymboleUnamed();
-    ti_insert("AFC", addr, value, 0);
+    //printf("2\n");
+    ti_insert("AFC", addr, value, NULL);
+    //printf("3\n");
+    return addr;
 }
 
-void addplpl() {
-    int addressOne = addSymboleUnamed();
-    ti_insert("AFC", addressOne, 1, 0);
+int addplpl(int addr) {
+    int addrOne = ts_addSymboleUnamed();
+    ti_insert("AFC", addrOne, 1, NULL);
+    ti_insert("ADD", addr, addr, addrOne);
+    return addr;
 }
 
-void varArith(char value) {
-    int addr = ts_addSymboleUnamed();
-    ti_insert("MOV", addr, ts_getAddressSymbole(value), NULL);
-}
-
-void affect(char var, int value) {
-    int addr = ts_getLastTmpAddr();
+int affect(char * var, int addr_value) {
+    //printf("1\n");
     int addr_var = ts_getAddressSymbole(var);
-    ti_insert("AFC", addr_var, addr, 0)
+    //printf("2\n");
+    ti_insert("COP", addr_var, addr_value, NULL);
+    //printf("3\n");
+    return addr_var;
 }
 
 
-void diff() {
 
+
+int cond(int addr1, int addr2, int op) {
+    int addrResult = ts_addSymboleUnamed();
+    switch(op){ 
+        case 1 /*SUP*/:     ti_insert("SUP", addrResult, addr1, addr2);  
+                            break ;
+        
+        case 2 /*EGAL*/:    ti_insert("EQU", addrResult, addr1, addr2);
+                            break ; 
+        case 3 /*INF*/:     ti_insert("INF", addrResult, addr1, addr2);
+                            break ; 
+        case 4 /*DIFF*/:    //ti_insert("EQU", addrResult, addr1, addr2);
+                            //ti_insert("COP", addrResult, not(addrResult), NULL); 
+                            //AMELIORER : Comment on fait le != ?
+                            break ; 
+        default : ti_insert("AFC", addrResult, addr1, addr2);
+                        
+    }
+    return addrResult;
 }
-void sup() {
 
-}
-void inf() {
-
-}
-
-void equal() {
-
+int preIf(int addrCond) {
+    int line = ti_insert("JMF", addrCond, NULL, NULL);
+    return line;
 }
 
-// void patch(int from, int to) {               En plus je sais pas ce que c'est ça
-// 	asm[from][1] = to ;
-// 	}
+void postIf(int line) {
+    ti_modif(line, NULL, NULL, ti_nbInstructions(), NULL);
+}
+
+int preWhile(int addrCond){
+    int line = ti_insert("JMF", addrCond, NULL, NULL);
+    return line;
+}
+
+void postWhile(int line){
+    ti_modif(line, NULL, NULL, ti_nbInstructions(), NULL);
+}
+
+int preElse() {
+    int line = ti_insert("JMP", NULL, NULL, NULL);
+    return line;
+}
+
+void postElse(int line) {
+    ti_modif(line, NULL, ti_nbInstructions(), NULL, NULL);
+}
+
 

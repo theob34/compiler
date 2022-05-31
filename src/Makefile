@@ -1,12 +1,12 @@
 GRM=compiler.y
-LEX=compiler_vAffichage.l
-# LEX=compiler.l
+# LEX=compiler_vAffichage.l
+LEX=compiler.l
 BIN=compiler
 
 CC=gcc
 CFLAGS=-Wall -g
 
-OBJ= y.tab.o lex.yy.o main.o  
+OBJ= y.tab.o lex.yy.o main.o utils.o tableInstructions.o tableSymbole.o
 
 all: $(BIN)
 

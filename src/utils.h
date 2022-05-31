@@ -4,13 +4,20 @@
 #ifndef utils
 #define utils
 
-void addArith();
-void subArith();
-void mulArith();
-void divArith();
-void nbArith(int value);
-void addplpl();
-void varArith(char value);
-void affect(char var, int value);
+int addArith(int addr1, int addr2);
+int subArith(int addr1, int addr2);
+int mulArith(int addr1, int addr2);
+int divArith(int addr1, int addr2);
+int nbArith(int value);
+int addplpl(int addr);
+int affect(char * var, int addr_value);
+int cond(int addr1, int addr2, int op);
+int preIf(int addrCond);
+void postIf(int line);
+int preWhile(int addrCond);
+void postWhile(int line);
+int preElse();
+void postElse(int line);
+
 
 #endif

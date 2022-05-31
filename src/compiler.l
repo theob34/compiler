@@ -11,7 +11,6 @@
 "main"      {return tMAIN;}
 "if"        {return tIF;}
 "while"     {return tWHILE;}
-"for"       {return tFOR;}
 ")"         {return tPF;}
 "("         {return tPO;}
 "{"         {return tAO;}
@@ -35,20 +34,24 @@
 ","         {return tCOMA;}
 "printf"    {return tPRINTF;}
 "!="        {return tDIFF;}
-"++"        {return tPLONE;}
+
 
 [ \t\n  ]+ {} //On ne fait rien
 
 
 "//.*$" {} 
--?[0-9]+  {return tNB;}
-[a-zA-Z]+(\w)* {return tVARIABLE;}
+-?[0-9]+  { yylval.nb = atoi(yytext);
+            return tNB;}
+[a-zA-Z]+(\w)* {    strncpy(yylval.var, yytext, 128);
+                    return tVARIABLE;}
 
 .  {return tERROR;}
 
 %%
 
 // Facultatif
+// "++" {return tPLONE;}
+// "for" {return tFOR;}
 // "<=" {fprintf (stderr, "<=");}
 // ">=" {fprintf (stderr, ">=");}
 // "^=" {fprintf (stderr, "^=");}

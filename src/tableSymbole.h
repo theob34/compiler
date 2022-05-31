@@ -1,22 +1,18 @@
-#define SIZE_NAME 128
-#define SIZE_TABLE 100
 #ifndef tableSymbole
 #define tableSymbole
+
+#define SIZE_NAME 128
+#define SIZE_TABLE 100
+
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct symbole{
     char name[SIZE_NAME] ;
     int address ;
     int depth ;
 } symbole ;
-
-symbole tableDesSymboles[SIZE_TABLE] ;
-int freePointer = 0 ; //Adresse de la première case mémoire disponible pour mon programme
-int profondeur = 0 ; //Profondeur de scope de notre programme
-int nbSymboles = 0 ; //Nombre de symboles dans la table
-
-symbole tableSymbolesTemporaires[SIZE_TABLE] ;
-int freePointerTemp = 0 ;
-int nbSymbolesTemp = 0 ;
 
 // ---- TABLE DES SYMBOLES ---- //
 //Ajoute un symbole à la table
@@ -29,11 +25,15 @@ void ts_profPlus();
 //Décrément de la profondeur du scope
 void ts_profMoins();
 
+void ts_affiche();
+
 // ---- TABLE TEMPORAIRE ---- //
 int ts_addSymboleUnamed();
 
 int ts_getLastTmpAddr();
 
 void ts_freeLastTmp();
+
+void ts_afficheTmp();
 
 #endif
